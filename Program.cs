@@ -1,3 +1,5 @@
+using VerstaTestTask.Data;
+
 namespace VerstaTestTask
 {
     public class Program
@@ -9,7 +11,12 @@ namespace VerstaTestTask
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            string? connectionString = builder.Configuration.GetConnectionString("Orders") ?? "Data Source=Orders.db";
+            
+            builder.Services.AddSqlite<ApplicationDbContext>(connectionString);
+            
             var app = builder.Build();
+            
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
@@ -28,7 +35,7 @@ namespace VerstaTestTask
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Order}/{action=Index}/{id?}");
 
             app.Run();
         }

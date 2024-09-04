@@ -1,0 +1,46 @@
+﻿@model Order
+
+<div class="card">
+    <div class="card-header">Add Order</div>
+    <div class="card-body">
+        <form method="post" class="row">
+            <div class="form-floating py-1 col-12">
+                <input asp-for="SenderCity" class="form-control border shadow" />
+                <label asp-for="SenderCity" class="ms-2"></label>
+                <span asp-validation-for="SenderCity" class="text-danger"></span>
+            </div>
+            <div class="form-floating py-1 col-12">
+                <input asp-for="SenderAddress" class="form-control border shadow" />
+                <label asp-for="SenderAddress" class="ms-2"></label>
+                <span asp-validation-for="SenderAddress" class="text-danger"></span>
+            </div>
+            <div class="form-floating py-1 col-12">
+                <input asp-for="RecipientCity" class="form-control border shadow" />
+                <label asp-for="RecipientCity" class="ms-2"></label>
+                <span asp-validation-for="RecipientCity" class="text-danger"></span>
+            </div>
+            <div class="form-floating py-1 col-12">
+                <input asp-for="RecipientAddress" class="form-control border shadow" />
+                <label asp-for="RecipientAddress" class="ms-2"></label>
+                <span asp-validation-for="RecipientAddress" class="text-danger"></span>
+            </div>
+            <div class="form-floating py-1 col-12">
+                <input asp-for="Weight" class="form-control border shadow" />
+                <label asp-for="Weight" class="ms-2"></label>
+                <span asp-validation-for="Weight" class="text-danger"></span>
+            </div>
+            <div class="row pt-2">
+                <div class="col-6 col-md-3">
+                    <button type="submit" class="btn btn-success w-100">
+                        <i class="bi bi-check-circle"></i> Create
+                    </button>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a asp-controller="Order" asp-action="Index" class="btn btn-secondary w-100">
+                        <i class="bi bi-x-circle"></i> Cancel
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
