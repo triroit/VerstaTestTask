@@ -1,7 +1,13 @@
 ﻿@model Order
 
+@{
+    ViewData["Title"] = "Добавить заказ";
+}
+
 <div class="card">
-    <div class="card-header">Add Order</div>
+    <div class="card-header">
+        <h1>Добавить заказ</h1>
+    </div>
     <div class="card-body">
         <form method="post" class="row">
             <div class="form-floating py-1 col-12">
@@ -32,15 +38,22 @@
             <div class="row pt-2">
                 <div class="col-6 col-md-3">
                     <button type="submit" class="btn btn-success w-100">
-                        <i class="bi bi-check-circle"></i> Create
+                        <i class="bi bi-check-circle"></i> Создать
                     </button>
                 </div>
                 <div class="col-6 col-md-3">
-                    <a asp-controller="Order" asp-action="Index" class="btn btn-secondary w-100">
-                        <i class="bi bi-x-circle"></i> Cancel
+                    <a asp-controller="Order" asp-action="Index" class="btn btn-outline-primary w-100">
+                        <i class="bi bi-x-circle"></i> Отменить
                     </a>
                 </div>
             </div>
         </form>
     </div>
 </div>
+
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

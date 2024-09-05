@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using VerstaTestTask.Data;
 using VerstaTestTask.Models;
 using VerstaTestTask.Models.DTOs;
@@ -13,15 +14,16 @@ namespace VerstaTestTask.Controllers
         {
             _db = db;
         }
+
         public IActionResult Index()
         {
             var orders = _db.Orders.ToList();
             return View(orders);
         }
 
-        public IActionResult Details(string Id) 
+        public async Task<IActionResult> DetailsAsync(string Id) 
         {
-            var order = _db.Orders.FirstOrDefault(u=>u.Id == Guid.Parse(Id));
+            var order = await _db.Orders.FirstOrDefaultAsync(u=>u.Id == Guid.Parse(Id));
             if (order == null)
             {
                 return NotFound();
@@ -35,7 +37,7 @@ namespace VerstaTestTask.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddOrder(OrderDTO newOrderDTO)
+        public async Task<IActionResult> AddOrderAsync(OrderDTO newOrderDTO)
         {
             if (ModelState.IsValid)
             {
@@ -50,7 +52,7 @@ namespace VerstaTestTask.Controllers
                     DateOfReceipt = DateTime.Now
                 };
                 _db.Orders.Add(newOrder);
-                _db.SaveChanges();
+                await _db.SaveChangesAsync();
                 return RedirectToAction("Index", "Order");
             }
             return View(newOrderDTO);

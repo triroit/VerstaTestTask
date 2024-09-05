@@ -1,11 +1,14 @@
-﻿namespace VerstaTestTask.Models.DTOs
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+
+namespace VerstaTestTask.Models.DTOs
 {
     public class OrderDTO
     {
-        public required string SenderCity { get; set; }
-        public required string SenderAddress { get; set; }
-        public required string RecipientCity { get; set; }
-        public required string RecipientAddress { get; set; }
-        public required double Weight { get; set; }
+        public string SenderCity { get; set; }
+        public string SenderAddress { get; set; }
+        public string RecipientCity { get; set; }
+        public string RecipientAddress { get; set; }
+        public double Weight { get; set; }
     }
 }
